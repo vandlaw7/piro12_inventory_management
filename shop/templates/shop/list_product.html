@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load humanize %}
+
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'shop/image.css' %}" type="text/css"/>
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        {% for product in products %}
+            <div class="col-4 mb-3">
+                <div class=" border rounded-lg">
+                    <div class="image">
+                        <img src="{{ product.photo.url }}">
+                    </div>
+                    <div class="m-3">
+                        <h5><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h5>
+                        <p>가격: {{ product.price|intcomma }}원</p>
+                        <p>남은 수량: {{ product.stock }}</p>
+                    </div>
+                    <div class="m-3">
+                        <a class="btn btn-primary" href="{% url 'shop:change_stock' product.pk '1' %}">증가</a>
+                        <a class="btn btn-primary" href="{% url 'shop:change_stock' product.pk '2' %}">감소</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+

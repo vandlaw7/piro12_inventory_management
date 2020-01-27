@@ -1,0 +1,13 @@
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'header.css' %}" />
+
+<div class="d-flex flex-column flex-md-row align-items-center p-1 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <a class="my-0 mr-md-auto" href="{% url "shop:list_product" %}">
+    <div class="nav"><img class="rounded-circle" src="{% static "icon.jpg" %}" alt="고구마왕"></div></a>
+
+    <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="{% url "shop:create_product" %}">상품 등록</a>
+        <a class="p-2 text-dark" href="{% url "shop:create_client" %}">거래처 등록</a>
+        <a class="p-2 text-dark" href="{% url "shop:list_client" %}">거래처 관리</a>
+    </nav>
+</div>

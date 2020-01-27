@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+    <div class="row">
+        {% for client in clients %}
+            <div class="col-4 mb-3">
+                <div class=" border rounded-lg">
+                    <div class="m-3">
+                        <h5><a href="{{ client.get_absolute_url }}">{{ client.name }}</a></h5>
+                        <p>{{ client.phone }}</p>
+                        <p>{{ client.address }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

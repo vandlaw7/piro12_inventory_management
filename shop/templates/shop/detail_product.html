@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+{% load humanize %}
+{% load static %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'shop/image.css' %}" type="text/css"/>
+{% endblock %}
+{% block content %}
+    <div class="container d-flex justify-content-center">
+        <div class="col-8">
+            <div class="row border rounded-lg mb-2 ">
+                <div class="image">
+                    <img src="{{ product.photo.url }}">
+                </div>
+                <div class="m-3 pl-5">
+                    <h5>{{ product.name }}</h5>
+                    <p>가격: {{ product.price|intcomma }}원</p>
+                    <p>남은 수량: {{ product.stock }}</p>
+                    <p>제품 설명: {{ product.desc }}</p>
+                    <p><a href="{% url 'shop:detail_client' product.client.pk %}">거래처: {{ product.client.name }}</a></p>
+                </div>
+            </div>
+            <div class="row">
+                <a class="btn btn-primary mr-1" href="{% url 'shop:edit_product' product.pk %}">수정</a>
+                <a class="btn btn-primary mr-1" href="{% url 'shop:delete_product' product.pk %}">삭제</a>
+                <a class="btn btn-primary mr-1" href="{% url 'shop:list_product' %}">목록</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
